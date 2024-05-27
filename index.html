@@ -7,7 +7,7 @@
   <title>Connect with Strangers</title>
 
   <!-- Bootstrap -->
-  <link href="/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="resources/css/app.css" rel="stylesheet">
 
@@ -177,6 +177,26 @@
   </style>
 </head>
 <body>
+
+
+  <div id="age_verification_popup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Age Verification</h4>
+        </div>
+        <div class="modal-body">
+          <p>You must be 18 years or older to use this website.</p>
+          <label>
+            <input type="checkbox" id="age_verification_checkbox"> I am 18 years or older
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="age_verification_ok_btn" disabled>OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container-fluid height-fill">
     <div class="row height-fill pos-middle">
       <div id="video_container" class="col-xs-12">
@@ -225,5 +245,23 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="/easyrtc/easyrtc.js"></script>
   <script src="resources/js/app.js"></script>
+
+   <script>
+    $(document).ready(function() {
+      $('#age_verification_checkbox').change(function() {
+        if($(this).is(':checked')) {
+          $('#age_verification_ok_btn').prop('disabled', false);
+        } else {
+          $('#age_verification_ok_btn').prop('disabled', true);
+        }
+      });
+
+      $('#age_verification_ok_btn').click(function() {
+        $('#age_verification_popup').modal('hide');
+      });
+
+      $('#age_verification_popup').modal('show');
+    });
+  </script>
 </body>
 </html>
