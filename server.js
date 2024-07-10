@@ -82,4 +82,4 @@ easyrtc.events.on("disconnect", function(connectionObj, next){
     partnerSocket.emit("disconnect_partner", socket.id);
     socket.partnerId = null;
   }
-});
+}); 
