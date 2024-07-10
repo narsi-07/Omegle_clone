@@ -24,6 +24,13 @@
         }
     });
 
+    $('#next2_btn').on('click', function() {
+        hangupCall();
+        showStatusPopup('Searching...');
+        easyrtc.webSocket.emit('next_user');
+      });
+      
+
     $('#next_btn').on('click', function() {
         hangupCall();
         showStatusPopup('Searching...');
@@ -123,6 +130,7 @@
             }
         );
     }
+  
 
     function addMessage(text, senderId) {
         var content = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br />');
